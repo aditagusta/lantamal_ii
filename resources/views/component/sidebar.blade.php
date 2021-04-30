@@ -39,7 +39,7 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item">
-                    <a href=""  aria-expanded="false">
+                    <a href="{{url("/")}}"  aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -288,6 +288,22 @@
                     <a href="{{route('member')}}"  aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Data Member</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-primary">
+                <li class="nav-item">
+                    <a href="{{route('saran')}}"  aria-expanded="false">
+                        <i class="fas fa-home"></i>
+                        <p>Data Saran</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-primary">
+                <li class="nav-item">
+                    <a href="{{route('pengaduan')}}"  aria-expanded="false">
+                        <i class="fas fa-home"></i>
+                        <p>Data Pengaduan</p>
                     </a>
                 </li>
             </ul>

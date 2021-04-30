@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\PengaduanController;
+use App\Http\Controllers\Admin\SaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Android
 Route::post('register', [MemberController::class ,'registerMember']);
+Route::post('login', [MemberController::class ,'loginMember']);
+Route::group(["middleware" => "auth:member"], function() {
+    Route::post('pengaduan', [PengaduanController::class ,'addPengaduan']);
+    Route::post('saran', [SaranController::class ,'addSaran']);
+});

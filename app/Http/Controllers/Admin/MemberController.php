@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use DB;
 use App\Models\Model\Member;
+use Auth;
 
 class MemberController extends Controller
 {
@@ -52,5 +53,23 @@ class MemberController extends Controller
                 return response()->json(['message' => 'Password Tidak Valid', 'status' => 200]);
             }
         }
+    }
+
+    public function loginMember(Request $request)
+    {
+        if ($token = Auth::guard('member')->attempt(["username" => $request->username, "password" => $request->password])) {
+            return $this->respondWithToken($token);
+        } else {
+            return response()->json("Error");
+        }
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            "data" => Auth::guard('member')->user()
+        ]);
     }
 }
