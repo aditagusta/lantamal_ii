@@ -39,7 +39,7 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item">
-                    <a href="{{url("/")}}"  aria-expanded="false">
+                    <a href="{{url("/home")}}"  aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -286,7 +286,7 @@
             <ul class="nav nav-primary">
                 <li class="nav-item">
                     <a href="{{route('member')}}"  aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-users"></i>
                         <p>Data Member</p>
                     </a>
                 </li>
@@ -294,7 +294,7 @@
             <ul class="nav nav-primary">
                 <li class="nav-item">
                     <a href="{{route('saran')}}"  aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-edit"></i>
                         <p>Data Saran</p>
                     </a>
                 </li>
@@ -302,7 +302,7 @@
             <ul class="nav nav-primary">
                 <li class="nav-item">
                     <a href="{{route('pengaduan')}}"  aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-edit"></i>
                         <p>Data Pengaduan</p>
                     </a>
                 </li>

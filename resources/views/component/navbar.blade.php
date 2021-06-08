@@ -1,7 +1,9 @@
 <div class="main-header">
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="blue">
-            <small style="color: whitesmoke">F1QR</small>
+        <a href="#" class="logo" style="color: white">
+           <img src="{{asset('logo/logo2-removebg-preview.png')}}" style="width: 40px;height:40px" alt="">&nbsp;&nbsp;&nbsp; Lantamal - II
+        </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
                 <i class="icon-menu"></i>
@@ -245,7 +247,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Account Setting</a>
                                 <div class="dropdown-divider"></div> --}}
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="{{route('postlogout')}}">Logout</a>
                             </li>
                         </div>
                     </ul>

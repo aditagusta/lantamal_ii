@@ -23,6 +23,17 @@ class SaranController extends Controller
         return view('pages.saran.index',compact('data'));
     }
 
+    public function remove($id)
+    {
+        $data = DB::table('tbl_saran')->where('id_saran',$id)->delete();
+        if($data == TRUE)
+        {
+            return back()->with('status','Data Saran Berhasil Dihapus');
+        } else {
+            return back()->with('error','Data Saran Gagal Dihapus');
+        }
+    }
+
     // Android
     public function addSaran(Request $request)
     {

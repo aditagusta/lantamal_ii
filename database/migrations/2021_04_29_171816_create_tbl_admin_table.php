@@ -14,7 +14,7 @@ class CreateTblAdminTable extends Migration
     public function up()
     {
         Schema::create('tbl_admin', function (Blueprint $table) {
-            $table->id('id_member');
+            $table->id('id_admin');
             $table->string('username');
             $table->string('password');
             $table->string('password1');

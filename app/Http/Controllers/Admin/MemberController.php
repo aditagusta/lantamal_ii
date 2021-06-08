@@ -30,6 +30,73 @@ class MemberController extends Controller
         return view('pages.member.index', compact('data'));
     }
 
+    public function get($id)
+    {
+        $data = DB::table('tbl_member')->where('id_member', $id)->first();
+        return view('pages.member.edit', compact('data'));
+    }
+
+    public function remove($id)
+    {
+        $data = DB::table('tbl_member')->where('id_member', $id)->delete();
+        if($data == TRUE)
+        {
+            return back()->with('status', 'Data Member Berhasil Dihapus');
+        } else {
+            return back()->with('error', 'Gagal Menghapus Member');
+        }
+    }
+
+    public function add(Request $request)
+    {
+        $validator = Validator::make($request->all(), $this->rules);
+        if ($validator->fails()) {
+            return back()->with('error', 'Data Tidak Valid');
+        } else {
+            if ($request->password == $request->password1) {
+                $pass = password_hash($request->password, PASSWORD_DEFAULT);
+                $data = DB::table('tbl_member')->insert([
+                    'username' => $request->username,
+                    'password' => $pass,
+                    'password1' => $request->password1,
+                    'nama_member' => $request->nama_member,
+                    'alamat' => $request->alamat,
+                    'no_ktp' => $request->no_ktp,
+                    'jenis_kelamin' => $request->jenis_kelamin,
+                ]);
+                return back()->with('status', 'Data Member Berhasil Ditambahkan');
+            } else {
+                return back()->with('error', 'Cek Password Anda Kembali');
+            }
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), $this->rules);
+        if ($validator->fails()) {
+            return back()->with('error', 'Data Tidak Valid');
+        } else {
+            if ($request->password == $request->password1) {
+                $pass = password_hash($request->password, PASSWORD_DEFAULT);
+                $data = DB::table('tbl_member')
+                ->where('id_member', $request->id_member)
+                ->update([
+                    'username' => $request->username,
+                    'password' => $pass,
+                    'password1' => $request->password1,
+                    'nama_member' => $request->nama_member,
+                    'alamat' => $request->alamat,
+                    'no_ktp' => $request->no_ktp,
+                    'jenis_kelamin' => $request->jenis_kelamin,
+                ]);
+                return redirect()->route("member")->with('status', 'Data Member Berhasil Diubah');
+            } else {
+                return back()->with('error', 'Cek Inputan Kembali');
+            }
+        }
+    }
+
     // Android
     public function registerMember(Request $request)
     {

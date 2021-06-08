@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use DB;
+use App\Models\Model\Pengaduan;
+use File;
 
 class PengaduanController extends Controller
 {
@@ -22,6 +24,20 @@ class PengaduanController extends Controller
     {
         $data = DB::table('tbl_pengaduan')->join('tbl_member','tbl_pengaduan.id_member','tbl_pengaduan.id_member')->get();
         return view('pages.pengaduan.index',compact('data'));
+    }
+
+    public function remove(Request $request, $id)
+    {
+            $data = Pengaduan::findOrFail($id);
+            $destinationPath = 'pengaduan';
+            File::delete($destinationPath . '/' . $data->foto);
+            $data->delete();
+            if($data == TRUE)
+            {
+                return back()->with('status','Data Berhasil Di Hapus');
+            } else {
+                return back()->with('error','Data Tidak Ditemukan');
+            }
     }
 
     // Android
